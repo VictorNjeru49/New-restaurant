@@ -15,7 +15,7 @@ userRouter
         if(!result.success){
             return c.json(result.error, 400)
         }
-    }), createuserController)
+    }), adminRoleAuth, createuserController)
     .delete("/users", adminRoleAuth, deleteuserController)
 
 // get address by id

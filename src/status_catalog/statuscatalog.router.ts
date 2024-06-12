@@ -7,11 +7,10 @@ import { adminRoleAuth, bothRoleAuth} from "../middleware/authormiddle";
 
 export const statuscatalogRouter = new Hono();
 
-statuscatalogRouter.get("/status_catalog", getstatuscatalog);
+statuscatalogRouter.get("/status_catalog", adminRoleAuth, getstatuscatalog);
 
 // get all status catalog
 statuscatalogRouter
-    .get("status_catalog", adminRoleAuth, getstatuscatalogController)
     .post("status_catalog", zValidator('json', statusCatalogValidator, (result, c)=>{
         if(!result.success){
             return c.json(result.error, 400)

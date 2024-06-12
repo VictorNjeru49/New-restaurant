@@ -14,7 +14,33 @@ const orderMenuService = async (limit?: number)=> {
 
 const getorderMenuService = async (id: number)=> {
     return await db.query.order_menu_itemtable.findFirst({
-        where: eq(order_menu_itemtable.id, id)
+        where: eq(order_menu_itemtable.id, id),
+        columns:{
+            quantity:true,
+            item_price:true,
+            price:true,
+            comment:true
+        },with:{
+            menu_item:{
+                columns:{
+                    name:true,
+                    description:true,
+                    price:true,
+                    active:true
+                }
+            },
+            order:{
+                columns:{
+                    estimated_delivery_time:true,
+                    actual_delivery_time:true,
+                    delivery_address_id:true,
+                    price:true,
+                    discount:true,
+                    final_price:true,
+                    comment:true
+                }
+    
+        }}
     })
 }
 

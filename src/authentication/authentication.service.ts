@@ -21,10 +21,13 @@ export const userLoginService = async (user: TSAuthOnUser) => {
         with: {
             usersing: {
                 columns: {
+                    id: true,
                     name: true,
                     contact_phone: true,
-                    id: true
-                }
+                    phone_verified: true,
+                    email: true,
+                    email_verified: true
+                },
             }
         }
     });

@@ -14,7 +14,23 @@ const driverService = async (limit?: number)=> {
 
 const getdriverService = async (id: number)=> {
     return await db.query.drivertable.findFirst({
-        where: eq(drivertable.id, id)
+        where: eq(drivertable.id, id),
+        columns:{
+            car_make:true,
+            car_model:true,
+            car_year:true,
+            online:true,
+            delivering:true
+        },with:{
+            user:{
+                columns:{
+                    name: true,
+                    contact_phone:true,
+                    email:true,
+                    confirmation_code:true,
+                }
+            }
+        }
     })
 }
 

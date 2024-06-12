@@ -15,10 +15,10 @@ addressRouter
         if(!result.success){
             return c.json(result.error, 400)
         }
-    }), createAddressController)
+    }), adminRoleAuth, createAddressController)
 
 // get address by id
 addressRouter
     .get("/address/:id", bothRoleAuth, getAddressController)
-    .put("/address/:id", updateAddressController)
-    .delete("/address/:id", deleteAddressController)
+    .put("/address/:id", adminRoleAuth, updateAddressController)
+    .delete("/address/:id", bothRoleAuth, deleteAddressController)

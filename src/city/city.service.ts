@@ -14,7 +14,10 @@ const cityService = async (limit?: number)=> {
 
 const getcityService = async (id: number)=> {
     return await db.query.citytable.findFirst({
-        where: eq(citytable.id, id)
+        where: eq(citytable.id, id),
+        columns:{
+            name: true
+        }
     })
 }
 

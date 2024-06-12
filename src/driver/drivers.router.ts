@@ -16,10 +16,10 @@ driverRouter
         if(!result.success){
             return c.json(result.error, 400)
         }
-    }), createdriverController)
+    }), adminRoleAuth, createdriverController)
 
 // get driver by id
 driverRouter
     .get("/driver/:id", bothRoleAuth, getdriverController)
-    .put("/driver/:id", updatedriverController)
-    .delete("/driver/:id", deletedriverController)
+    .put("/driver/:id", bothRoleAuth ,updatedriverController)
+    .delete("/driver/:id", adminRoleAuth, deletedriverController)

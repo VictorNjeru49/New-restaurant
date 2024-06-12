@@ -8,19 +8,18 @@ import { adminRoleAuth, bothRoleAuth} from "../middleware/authormiddle";
 
 export const orderMenuRouter = new Hono();
 
-orderMenuRouter.get("/order_menu_item", getorderMenu);
+orderMenuRouter.get("/order_menu_item", adminRoleAuth, getorderMenu);
 
 // get all order Menu
 orderMenuRouter
-    .get("order_menu_item", adminRoleAuth, getorderMenuController)
     .post("order_menu_item", zValidator('json', orderMenuItemValidator, (result, c)=>{
         if(!result.success){
             return c.json(result.error, 400)
         }
-    }), createorderMenuController)
+    }), adminRoleAuth, createorderMenuController)
 
 // get order Menu by id
 orderMenuRouter
     .get("/order_menu_item/:id", bothRoleAuth, getorderMenuController)
-    .put("/order_menu_item/:id", updateorderMenuController)
-    .delete("/order_menu_item/:id", deleteorderMenuController)
+    .put("/order_menu_item/:id", adminRoleAuth, updateorderMenuController)
+    .delete("/order_menu_item/:id",adminRoleAuth, deleteorderMenuController)

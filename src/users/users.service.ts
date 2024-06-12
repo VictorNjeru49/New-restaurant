@@ -12,9 +12,55 @@ const userService = async (limit?: number)=> {
     return await db.query.userstable.findMany();
 }
 
+
+
 const getuserService = async (id: number)=> {
     return await db.query.userstable.findFirst({
-        where: eq(userstable.id, id)
+        where: eq(userstable.id, id),
+        columns:{
+            name: true,
+            contact_phone: true,
+            phone_verified: true,
+            email:true,
+            email_verified: true,
+            confirmation_code: true
+        },
+        with:{
+            address:{
+                columns:{
+                    street_address_1: true,
+                    street_address_2: true,
+                    delivery_instructions: true,
+                    zip_code: true
+                }
+            },
+            orders:{
+                columns:{
+                    actual_delivery_time:true,
+                    delivery_address_id:true,
+                    price:true,
+                    discount:true,
+                    final_price:true,
+                    comment:true
+                }
+            },
+            comment:{
+                columns:{
+                    comment_text: true,
+                    is_complaint:true,
+                    is_praise:true
+                }
+            },
+            driver:{
+                columns:{
+                    car_make: true,
+                    car_model: true,
+                    car_year: true,
+                    online: true,
+                    delivering: true
+                }
+            }
+        }
     })
 }
 

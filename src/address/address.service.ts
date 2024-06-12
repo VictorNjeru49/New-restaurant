@@ -14,7 +14,25 @@ const addressService = async (limit?: number)=> {
 
 const getaddressService = async (id: number)=> {
     return await db.query.addresstable.findFirst({
-        where: eq(addresstable.id, id)
+        where: eq(addresstable.id, id),
+        with:{
+            user:{
+                columns:{
+                    name:true,
+                    email:true,
+                    email_verified:true,
+                    contact_phone:true,
+                    phone_verified:true,
+                    confirmation_code:true,
+                }
+            },
+            city:
+            {
+                columns:{
+                    name:true
+                }
+            }
+        }
     })
 }
 

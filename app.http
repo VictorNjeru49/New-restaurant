@@ -433,14 +433,14 @@ Content-Type: application/json
 
 {
     
-    "userId": 5,
+    "userId": 3,
     "username": "peter",
     "password": "drivern",
     "role": "driver"
 
 }
 
-### user logins
+### admin logins
 POST http://localhost:3000/login
 Content-Type: application/json
 
@@ -461,15 +461,28 @@ Content-Type: application/json
 
 
 ###
-GET http://localhost:3000/driver
+POST http://localhost:3000/login
+Content-Type: application/json
+    
+{
+    "username": "peter",
+    "password": "drivern"
+}
+
+###admin
+GET http://localhost:3000/driver/2
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJuamVydSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODE5NjgzMH0.JvYUau-LYwYB4D6oYpdeE8mgi6mcTbQbtkCAcFvFqS0
 
 
-###
-GET http://localhost:3000/users
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJuamVydSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODE5MzgyOX0.E54t808Kc0jwC1OE8ysQaV2CkMqhXbCCG-9Wn0No0Ew
+### admin
+GET http://localhost:3000/users/3
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJuamVydSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODIxMzk3M30.-OX4g0WTeS_R4cIjLuGjNPIBQqnTwP1puIcBJA4d4iY
 
-
-###
+### users
 GET http://localhost:3000/users/2
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJpZmFuIiwicm9sZSI6InVzZXIiLCJleHAiOjE3MTgxOTM1NzZ9.PtCd4xmMaHXFSZhNNF1FWmbcPWtLXxTjI0_MR6RpYWI
+
+
+### driver user
+GET http://localhost:3000/driver/1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwZXRlciIsInJvbGUiOiJkcml2ZXIiLCJleHAiOjE3MTgyMDAxMTZ9.kftoITvu-TedO7Yqi3dlG3aGehct388o7Nfy6lYxDwA

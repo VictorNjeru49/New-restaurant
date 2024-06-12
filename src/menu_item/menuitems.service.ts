@@ -14,7 +14,27 @@ const menuitemsService = async (limit?: number)=> {
 
 const getmenuitemsService = async (id: number)=> {
     return await db.query.menu_itemtable.findFirst({
-        where: eq(menu_itemtable.id, id)
+        where: eq(menu_itemtable.id, id),
+        columns:{
+            name:true,
+            description:true,
+            ingredients:true,
+            price:true,
+            active:true
+        }, with:{
+            restaurant:{
+                columns:{
+                    name:true,
+                    street_address:true,
+                    zip_code:true,
+                }
+            },
+            category:{
+                columns:{
+                    name:true
+                }
+            }
+        }
     })
 }
 

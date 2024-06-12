@@ -7,19 +7,18 @@ import { adminRoleAuth, bothRoleAuth} from "../middleware/authormiddle";
 
 export const categoriesRouter = new Hono();
 
-categoriesRouter.get("/categories", getcategory);
+categoriesRouter.get("/categories",adminRoleAuth, getcategory);
 
 // get all category table
 categoriesRouter
-    .get("/categories", adminRoleAuth, getcategoryController)
     .post("/categories", zValidator('json', categoryValidator, (result, c)=>{
         if(!result.success){
             return c.json(result.error, 400)
         }
-    }), createcategoryController)
+    }), adminRoleAuth, createcategoryController)
 
 // get category table by id
 categoriesRouter
     .get("/categories/:id", bothRoleAuth, getcategoryController)
-    .put("/categories/:id", updatecategoryController)
-    .delete("/categories/:id", deletecategoryController)
+    .put("/categories/:id", adminRoleAuth, updatecategoryController)
+    .delete("/categories/:id", adminRoleAuth, deletecategoryController)

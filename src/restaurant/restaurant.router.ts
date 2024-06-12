@@ -7,12 +7,11 @@ import { adminRoleAuth, bothRoleAuth} from "../middleware/authormiddle";
 
 export const restaurantRouter = new Hono();
 
-restaurantRouter.get("/restaurant", getrestaurant);
+restaurantRouter.get("/restaurant", adminRoleAuth, getrestaurant);
 
 // get all restaurant
 restaurantRouter
-    .get("restaurant",adminRoleAuth, getrestaurantController)
-    .post("restaurant", zValidator('json', restaurantValidator, (result, c)=>{
+   .post("restaurant", zValidator('json', restaurantValidator, (result, c)=>{
         if(!result.success){
             return c.json(result.error, 400)
         }

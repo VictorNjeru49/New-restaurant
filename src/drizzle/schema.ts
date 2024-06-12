@@ -198,7 +198,7 @@ export const driverrelations = relations( authoritydrivertable, ({ one})=> ({
         city: one(citytable,{
           fields:[addresstable.city_id],
           references:[citytable.id]
-        }),
+        })
         }));
         
         const CityRelations = relations(citytable, ({ one }) => ({
@@ -302,7 +302,9 @@ export const driverrelations = relations( authoritydrivertable, ({ one})=> ({
         const userrelations = relations(userstable,({many})=>({
           address:many(addresstable),
           orders:many(orderstable),
-          restaurant_owner:many(restaurant_ownertable)
+          restaurant_owner:many(restaurant_ownertable),
+          comment: many(commenttable),
+          driver:many(drivertable)
         }))
     
 // address table to insert and select

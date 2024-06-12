@@ -7,11 +7,10 @@ import { adminRoleAuth, bothRoleAuth} from "../middleware/authormiddle";
 
 export const stateRouter = new Hono();
 
-stateRouter.get("/state", getstate);
+stateRouter.get("/state", adminRoleAuth, getstate);
 
 // get all state
 stateRouter
-    .get("state", adminRoleAuth, getstateController)
     .post("state", zValidator('json', stateValidator, (result, c)=>{
         if(!result.success){
             return c.json(result.error, 400)

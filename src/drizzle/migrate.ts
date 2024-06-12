@@ -1,13 +1,12 @@
 import "dotenv/config";
-import { migrate } from "drizzle-orm/node-postgres/migrator";
+import { migrate } from "drizzle-orm/neon-http/migrator";
 
-import db, { client } from "./db";
+import db from "./db";
 
 async function migration() {
 
     console.log("======== Migrations started ========")
     await migrate(db, { migrationsFolder: __dirname + "/migrations" })
-    await client.end()
     console.log("======== Migrations ended ========")
     process.exit(0)
 

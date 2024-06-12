@@ -7,19 +7,18 @@ import { adminRoleAuth, bothRoleAuth} from "../middleware/authormiddle";
 
 export const cityRouter = new Hono();
 
-cityRouter.get("/city", getcity);
+cityRouter.get("/city", adminRoleAuth, getcity);
 
 // get all city
 cityRouter
-    .get("city", adminRoleAuth ,getcityController)
     .post("city",  zValidator('json', cityValidator, (result, c)=>{
         if(!result.success){
             return c.json(result.error, 400)
         }
-    }), createcityController)
+    }), adminRoleAuth, createcityController)
 
 // get city by id
 cityRouter
     .get("/city/:id", bothRoleAuth, getcityController)
-    .put("/city/:id", updatecityController)
-    .delete("/city/:id", deletecityController)
+    .put("/city/:id", bothRoleAuth, updatecityController)
+    .delete("/city/:id",bothRoleAuth, deletecityController)

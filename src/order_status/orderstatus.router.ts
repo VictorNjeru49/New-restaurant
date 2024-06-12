@@ -7,11 +7,11 @@ import { adminRoleAuth, bothRoleAuth} from "../middleware/authormiddle";
 
 export const orderstatusRouter = new Hono();
 
-orderstatusRouter.get("/order_status", getorderstatus);
+orderstatusRouter.get("/order_status", adminRoleAuth, getorderstatus);
 
 // get all order status
 orderstatusRouter
-    .get("order_status",adminRoleAuth, getorderstatusController)
+
     .post("order_status", zValidator('json', orderStatusValidator, (result, c)=>{
         if(!result.success){
             return c.json(result.error, 400)
