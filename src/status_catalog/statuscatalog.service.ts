@@ -14,7 +14,10 @@ const statuscatalogService = async (limit?: number)=> {
 
 const getstatuscatalogService = async (id: number)=> {
     return await db.query.status_catalogtable.findFirst({
-        where: eq(status_catalogtable.id, id)
+        where: eq(status_catalogtable.id, id),
+        columns:{
+            name: true
+        }
     })
 }
 

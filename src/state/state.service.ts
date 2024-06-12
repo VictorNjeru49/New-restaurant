@@ -14,7 +14,11 @@ const stateService = async (limit?: number)=> {
 
 const getstateService = async (id: number)=> {
     return await db.query.statetable.findFirst({
-        where: eq(statetable.id, id)
+        where: eq(statetable.id, id),
+        columns:{
+            name: true,
+            code: true,
+        }
     })
 }
 

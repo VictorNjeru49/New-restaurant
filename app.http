@@ -486,3 +486,4 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJpZmFuIiwicm9sZSI6
 ### driver user
 GET http://localhost:3000/driver/1
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwZXRlciIsInJvbGUiOiJkcml2ZXIiLCJleHAiOjE3MTgyMDAxMTZ9.kftoITvu-TedO7Yqi3dlG3aGehct388o7Nfy6lYxDwA
+

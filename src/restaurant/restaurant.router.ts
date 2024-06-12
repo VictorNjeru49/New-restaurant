@@ -15,10 +15,10 @@ restaurantRouter
         if(!result.success){
             return c.json(result.error, 400)
         }
-    }), createrestaurantController)
+    }),adminRoleAuth, createrestaurantController)
 
 // get restaurant by id
 restaurantRouter
     .get("/restaurant/:id",bothRoleAuth, getrestaurantController)
-    .put("/restaurant/:id", updaterestaurantController)
-    .delete("/restaurant/:id", deleterestaurantController)
+    .put("/restaurant/:id", bothRoleAuth, updaterestaurantController)
+    .delete("/restaurant/:id", adminRoleAuth, deleterestaurantController)

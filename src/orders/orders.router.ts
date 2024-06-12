@@ -15,10 +15,10 @@ ordersRouter
         if(!result.success){
             return c.json(result.error, 400)
         }
-    }), createordersController)
+    }), adminRoleAuth, createordersController)
 
 // get orders by id
 ordersRouter
     .get("/orders/:id",bothRoleAuth, getordersController)
-    .put("/orders/:id", updateordersController)
+    .put("/orders/:id", bothRoleAuth, updateordersController)
     .delete("/orders/:id", deleteordersController)

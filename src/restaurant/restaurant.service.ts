@@ -14,8 +14,39 @@ const restaurantService = async (limit?: number)=> {
 
 const getrestaurantService = async (id: number)=> {
     return await db.query.restauranttable.findFirst({
-        where: eq(restauranttable.id, id)
-    })
+        where: eq(restauranttable.id, id),
+        columns:{
+            name:true,
+            street_address:true,
+            zip_code:true
+        },
+        with:{
+            city:{
+                columns:{
+                    name:true
+                }
+            },
+            menubar:{
+                columns:{
+                    name:true,
+                    description:true,
+                    ingredients:true,
+                    price:true,
+                    active:true
+                }
+            }, 
+            orders:{
+                columns:{
+                    estimated_delivery_time:true,
+                    actual_delivery_time:true,
+                    delivery_address_id:true,
+                    price:true,
+                    discount:true,
+                    final_price:true,
+                    comment:true
+                }
+            }
+    }})
 }
 
 const createrestaurantService = async (user: TIresturant) => {

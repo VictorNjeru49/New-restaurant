@@ -15,10 +15,10 @@ stateRouter
         if(!result.success){
             return c.json(result.error, 400)
         }
-    }), createstateController)
+    }), adminRoleAuth, createstateController)
 
 // get state by id
 stateRouter
     .get("/state/:id",bothRoleAuth, getstateController)
-    .put("/state/:id", updatestateController)
-    .delete("/state/:id", deletestateController)
+    .put("/state/:id", bothRoleAuth, updatestateController)
+    .delete("/state/:id", bothRoleAuth, deletestateController)

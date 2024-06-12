@@ -14,7 +14,16 @@ const resturantownerService = async (limit?: number)=> {
 
 const getresturantownerService = async (id: number)=> {
     return await db.query.restaurant_ownertable.findFirst({
-        where: eq(restaurant_ownertable.id, id)
+        where: eq(restaurant_ownertable.id, id),
+        with:{
+        restaurant:{
+                columns:{
+                    name:true,
+                    street_address:true,
+                    zip_code:true
+                }
+            }
+        }
     })
 }
 

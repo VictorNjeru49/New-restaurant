@@ -15,10 +15,10 @@ statuscatalogRouter
         if(!result.success){
             return c.json(result.error, 400)
         }
-    }), createstatuscatalogController)
+    }), adminRoleAuth, createstatuscatalogController)
 
 // get status catalog by id
 statuscatalogRouter
     .get("/status_catalog/:id", bothRoleAuth, getstatuscatalogController)
-    .put("/status_catalog/:id", updatestatuscatalogController)
+    .put("/status_catalog/:id",bothRoleAuth, updatestatuscatalogController)
     .delete("/status_catalog/:id", deletestatuscatalogController)
