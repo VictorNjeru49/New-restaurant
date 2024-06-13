@@ -20,7 +20,7 @@ import { authorityrelationship } from './authentication/authentication.router'
 
 const app = new Hono()
 
-app.get('/', (c) => {
+app.get('/welcome', (c) => {
   return c.text('Hello Hono!')
 })
 
@@ -56,7 +56,7 @@ app.route('/' , statuscatalogRouter)
 app.route('/' , authorityrelationship)
 
 // const port = 3000
-console.log("server listening to port 3000")
+console.log(`server listening to port ${process.env.PORT}`)
 
 
 serve({
