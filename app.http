@@ -487,3 +487,17 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJpZmFuIiwicm9sZSI6
 GET http://localhost:3000/driver/1
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwZXRlciIsInJvbGUiOiJkcml2ZXIiLCJleHAiOjE3MTgyMDAxMTZ9.kftoITvu-TedO7Yqi3dlG3aGehct388o7Nfy6lYxDwA
 
+
+###admin
+GET http://localhost:3000/categories/2
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwZXRlciIsInJvbGUiOiJkcml2ZXIiLCJleHAiOjE3MTgyNjcxNTF9.zF0EXCPx7VYzBUyt8GVTo7w0HY56gfGP_tBWhSMnPY4
+
+
+###admin
+GET http://localhost:3000/city/2
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwZXRlciIsInJvbGUiOiJkcml2ZXIiLCJleHAiOjE3MTgyNjcxNTF9.zF0EXCPx7VYzBUyt8GVTo7w0HY56gfGP_tBWhSMnPY4
+
+
+###admin
+GET http://localhost:3000/restaurant_owner/2
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwZXRlciIsInJvbGUiOiJkcml2ZXIiLCJleHAiOjE3MTgyNjcxNTF9.zF0EXCPx7VYzBUyt8GVTo7w0HY56gfGP_tBWhSMnPY4

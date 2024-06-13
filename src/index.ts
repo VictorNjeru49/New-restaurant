@@ -55,10 +55,10 @@ app.route('/' , statuscatalogRouter)
 
 app.route('/' , authorityrelationship)
 
-const port = 3000
-console.log(`Server is running on port ${port}`)
+// const port = 3000
+console.log("server listening to port 3000")
 
 serve({
   fetch: app.fetch,
-  port
+  port: 3000
 })
