@@ -471,7 +471,7 @@ Content-Type: application/json
 
 ###admin
 GET http://localhost:3000/driver/2
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJuamVydSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODE5NjgzMH0.JvYUau-LYwYB4D6oYpdeE8mgi6mcTbQbtkCAcFvFqS0
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwZXRlciIsInJvbGUiOiJkcml2ZXIiLCJleHAiOjE3MTgyNjcxNTF9.zF0EXCPx7VYzBUyt8GVTo7w0HY56gfGP_tBWhSMnPY4
 
 
 ### admin
